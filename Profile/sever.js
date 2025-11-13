@@ -1,38 +1,33 @@
-const express = require('express')
-const path = require('path')
-const app = express()
-const PORT = process.env.PORT || 3000
+const express = require('express');
+const path = require('path');
 
+const app = express();
+const PORT = 3000;
 
-// Serve static files from public
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/api/home', (req, res) => {
+  res.json({
+    schedule: [
+      { day: 'Thứ 2', time: '7:00 - 9:00', subject: 'Toán cao cấp' },
+      { day: 'Thứ 3', time: '9:30 - 11:30', subject: 'Lập trình Java' },
+      { day: 'Thứ 5', time: '13:00 - 15:00', subject: 'Cơ sở dữ liệu' }
+    ],
+    attendance: [
+      { date: '01/11/2025', status: 'Có mặt' },
+      { date: '02/11/2025', status: 'Vắng có phép' },
+      { date: '03/11/2025', status: 'Có mặt' }
+    ],
+    grades: [
+      { subject: 'Toán cao cấp', score: 9 },
+      { subject: 'Java', score: 8.5 },
+      { subject: 'Cơ sở dữ liệu', score: 9.2 }
+    ]
+  });
+});
 
-// Example profile data (thay đổi ở đây để cập nhật thông tin)
-const profile = {
-name: 'Le Minh',
-title: 'Fullstack Developer (Node.js)',
-location: 'Hà Nội, Việt Nam',
-email: 'leminh@example.com',
-phone: '+84 912 345 678',
-bio: 'Mình là một lập trình viên thích xây dựng ứng dụng web đơn giản, rõ ràng và dễ mở rộng.',
-skills: ['JavaScript', 'Node.js', 'Express', 'HTML', 'CSS', 'React'],
-avatar: '/avatar.png' // nếu muốn, bạn có thể đặt ảnh vào public/avatar.png
-}
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/profile', (req, res) => res.sendFile(path.join(__dirname, 'public', 'profile.html')));
+app.get('/chat', (req, res) => res.sendFile(path.join(__dirname, 'public', 'chat.html')));
 
-
-// API trả về profile dưới dạng JSON
-app.get('/api/profile', (req, res) => {
-res.json(profile)
-})
-
-
-// Fallback to index.html for SPA-style routing (không bắt buộc)
-app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
-
-
-app.listen(PORT, () => {
-console.log(`Server running on http://localhost:${PORT}`)
-})
+app.listen(PORT, () => console.log(`🚀 Server chạy tại http://localhost:${PORT}`));

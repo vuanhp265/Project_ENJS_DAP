@@ -1,0 +1,31 @@
+{
+"profile": {
+"name": "Le Minh",
+"title": "Sinh viên - Lớp T2410E",
+"address": "Hà Nội, Việt Nam",
+"email": "leminh@example.com",
+"phone": "+84 912 345 678",
+"bio": "Mình là sinh viên chuyên ngành Công nghệ thông tin, yêu thích lập trình web và các ứng dụng giáo dục.",
+"skills": ["JavaScript", "Node.js", "Express", "HTML", "CSS"]
+},
+"attendance": [
+{ "date": "2025-11-03", "status": "Có mặt" },
+{ "date": "2025-11-04", "status": "Vắng" },
+{ "date": "2025-11-05", "status": "Có mặt" }
+],
+"grades": [
+{ "subject": "Toán", "score": 8.5 },
+{ "subject": "Lập trình Java", "score": 9.0 },
+{ "subject": "CSDL", "score": 7.5 }
+],
+"schedule": [
+{ "day": "Thứ 2", "time": "08:00 - 10:00", "subject": "Toán" },
+{ "day": "Thứ 3", "time": "10:30 - 12:00", "subject": "Lập trình Java" },
+{ "day": "Thứ 4", "time": "13:00 - 15:00", "subject": "CSDL" }
+],
+"chatResponses": [
+{ "keywords": ["điểm danh", "diem danh"], "reply": "Điểm danh được thực hiện mỗi sáng 8:00. Bạn có thể xem trạng thái điểm danh trên trang Home." },
+{ "keywords": ["lịch", "lich"], "reply": "Lịch học được cập nhật trên trang Home — kiểm tra phần Schedule." },
+{ "keywords": ["điểm", "diem"], "reply": "Bạn có thể xem điểm thi trong phần Kết quả trên trang Home." }
+]
+}

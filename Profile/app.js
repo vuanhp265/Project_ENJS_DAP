@@ -1,41 +1,51 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// Load dữ liệu trang chủ
+async function loadHome() {
+  try {
+    const res = await fetch('/api/home');
+    const data = await res.json();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+    const scheduleEl = document.getElementById('schedule');
+    const attendanceEl = document.getElementById('attendance');
+    const gradesEl = document.getElementById('grades');
 
-var app = express();
+    if (scheduleEl) {
+      scheduleEl.innerHTML = data.schedule.map(s =>
+        `<div class="small"><strong>${s.day}</strong> • ${s.time} — ${s.subject}</div>`
+      ).join('');
+    }
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+    if (attendanceEl) {
+      attendanceEl.innerHTML = data.attendance.map(a =>
+        `<li>${a.date} — ${a.status}</li>`
+      ).join('');
+    }
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+    if (gradesEl) {
+      gradesEl.innerHTML = data.grades.map(g =>
+        `<li>${g.subject}: ${g.score}</li>`
+      ).join('');
+    }
+  } catch (err) {
+    console.error('Lỗi tải dữ liệu:', err);
+  }
+}
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Chat box
+function sendMessage() {
+  const input = document.getElementById('chatMessage');
+  const chatBox = document.getElementById('chatBox');
+  if (!input.value.trim()) return;
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+  const msg = document.createElement('div');
+  msg.className = 'chat-message user';
+  msg.textContent = input.value;
+  chatBox.appendChild(msg);
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  const botReply = document.createElement('div');
+  botReply.className = 'chat-message bot';
+  botReply.textContent = 'Cảm ơn bạn! Bộ phận hỗ trợ sẽ phản hồi sớm.';
+  chatBox.appendChild(botReply);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
+  input.value = '';
+  chatBox.scrollTop = chatBox.scrollHeight;
+}

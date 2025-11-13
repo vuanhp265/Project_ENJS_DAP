@@ -1,34 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Thông tin cá nhân</title>
-<link rel="stylesheet" href="/style.css" />
+  <meta charset="UTF-8">
+  <title>Trang chủ - Student Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="card">
-<img id="avatar" src="/avatar.png" alt="avatar" class="avatar" onerror="this.style.display='none'" />
-<h1 id="name">Đang tải...</h1>
-<p id="title" class="muted"></p>
+  <nav class="navbar">
+    <h2 class="logo">Student Portal</h2>
+    <ul>
+      <li><a href="/">Trang chủ</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/chat">Chat Box</a></li>
+    </ul>
+  </nav>
 
+  <section class="home">
+    <h1>📘 Quản lý sinh viên</h1>
+    <p class="subtitle">Theo dõi điểm danh, lịch học và kết quả học tập của bạn</p>
 
-<section id="bio"></section>
+    <div class="cards">
+      <div class="card">
+        <h3>📅 Lịch học</h3>
+        <div id="schedule"></div>
+      </div>
 
+      <div class="card">
+        <h3>✅ Điểm danh</h3>
+        <ul id="attendance"></ul>
+      </div>
 
-<ul id="skills" class="skills"></ul>
+      <div class="card">
+        <h3>📊 Kết quả</h3>
+        <ul id="grades"></ul>
+      </div>
+    </div>
+  </section>
 
-
-<div class="contacts">
-<a id="email" href="#"></a>
-<a id="phone" href="#"></a>
-</div>
-
-
-<button id="editBtn">Chỉnh sửa</button>
-</main>
-
-
-<script src="/app.js"></script>
+  <script src="app.js"></script>
+  <script>loadHome()</script>
 </body>
 </html>
