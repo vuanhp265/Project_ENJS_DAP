@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Box - Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2 class="logo">Student Portal</h2>
+    <ul>
+      <li><a href="/">Trang chủ</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/chat">Chat Box</a></li>
+      <li><a href="/loginpage">Đăng nhập</a></li>
+    </ul>
+  </nav>
+
+  <section class="chat">
+    <h1>💬 Chat Box Sinh viên</h1>
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Nhập câu hỏi của bạn...">
+      <button onclick="sendMessage()">Gửi</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

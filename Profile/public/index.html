@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang chủ - Student Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2 class="logo">Student Portal</h2>
+    <ul>
+      <li><a href="/">Trang chủ</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/chat">Chat Box</a></li>
+      <li><a href="/loginpage">Đăng nhập</a></li>
+    </ul>
+  </nav>
+
+  <section class="home">
+    <h1>📘 Quản lý sinh viên</h1>
+    <p class="subtitle">Theo dõi điểm danh, lịch học và kết quả học tập của bạn</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>📅 Lịch học</h3>
+        <div id="schedule"></div>
+      </div>
+
+      <div class="card">
+        <h3>✅ Điểm danh</h3>
+        <ul id="attendance"></ul>
+      </div>
+
+      <div class="card">
+        <h3>📊 Kết quả</h3>
+        <ul id="grades"></ul>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>loadHome()</script>
+</body> 
+</html>
