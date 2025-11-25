@@ -10,27 +10,59 @@
     <h2 class="logo">Student Portal</h2>
     <ul>
       <li><a href="/">Trang chủ</a></li>
-      <li><a href="/profile">Profile</a></li>
+      <li><a href="/profile.html">Profile</a></li>
       <li><a href="/chat">Chat Box</a></li>
       <li><a href="/loginpage">Đăng nhập</a></li>
     </ul>
   </nav>
 
   <section class="profile">
-    <div class="profile-card">
-      <img src="https://i.pravatar.cc/150?img=3" class="avatar">
-      <h2>Nguyễn Văn A</h2>
-      <p class="muted">MSSV: 20251001</p>
-      <p>📍 Địa chỉ: 123 Đường Lê Lợi, Hà Nội</p>
-      <p>📧 Email: nguyenvana@example.com</p>
-      <p>📱 SĐT: 0901234567</p>
-
-      <ul class="skills">
-        <li>Java</li><li>React</li><li>SQL</li><li>Spring Boot</li>
-      </ul>
-
-      <button onclick="window.location.href='/'">⬅ Quay lại Trang chủ</button>
+    <div class="profile-card" id="profile-card">
+      Loading profile...
     </div>
   </section>
+
+  <script>
+    // Lấy studentId từ localStorage (được lưu khi đăng ký)
+    const studentId = localStorage.getItem("studentId");
+
+    async function loadProfile() {
+      const card = document.getElementById("profile-card");
+
+      if (!studentId) {
+        card.innerHTML = "<p>Chưa có sinh viên nào đăng nhập.</p>";
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/profile/${studentId}`);
+        const data = await res.json();
+
+        if (data.success) {
+          const s = data.student;
+          card.innerHTML = `
+            <img src="https://i.pravatar.cc/150?img=3" class="avatar">
+            <h2>${s.name}</h2>
+            <p class="muted">MSSV: ${s.studentId}</p>
+            <p>📍 Địa chỉ: ${s.address}</p>
+            <p>📧 Email: ${s.email}</p>
+            <p>📱 SĐT: ${s.phone}</p>
+
+            <ul class="skills">
+              ${s.skills.split(",").map(skill => `<li>${skill.trim()}</li>`).join("")}
+            </ul>
+
+            <button onclick="window.location.href='/'">⬅ Quay lại Trang chủ</button>
+          `;
+        } else {
+          card.innerHTML = `<p>${data.message}</p>`;
+        }
+      } catch (err) {
+        card.innerHTML = "<p>🚨 Lỗi kết nối server!</p>";
+      }
+    }
+
+    loadProfile();
+  </script>
 </body>
 </html>

@@ -9,102 +9,105 @@
 
 <body class="min-h-screen flex items-center justify-center p-4 bg-gray-100">
 
-  <div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-2xl">
-    <div class="text-center mb-8">
-      <h1 class="text-blue-600 mb-2 text-2xl font-bold">Đăng Ký Tài Khoản Sinh Viên</h1>
-      <p class="text-gray-600">Vui lòng điền đầy đủ thông tin bên dưới</p>
-    </div>
-
-    <form class="space-y-6" id="register-form">
-
-      <div class="space-y-2">
-        <label for="name" class="block text-gray-700">Tên <span class="text-red-500">*</span></label>
-        <input type="text" id="name" placeholder="Nguyễn Văn A" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <div class="space-y-2">
-        <label for="studentId" class="block text-gray-700">Mã số sinh viên <span class="text-red-500">*</span></label>
-        <input type="text" id="studentId" placeholder="001012412" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <div class="space-y-2">
-        <label for="address" class="block text-gray-700">Địa chỉ <span class="text-red-500">*</span></label>
-        <input type="text" id="address" placeholder="123 Đường Lê Lợi, Hà Nội" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <div class="space-y-2">
-        <label for="email" class="block text-gray-700">Email <span class="text-red-500">*</span></label>
-        <input type="email" id="email" placeholder="nguyenvana@example.com" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <div class="space-y-2">
-        <label for="phone" class="block text-gray-700">SĐT <span class="text-red-500">*</span></label>
-        <input type="tel" id="phone" placeholder="0901234567" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <div class="space-y-2">
-        <label for="skills" class="block text-gray-700">Kỹ năng <span class="text-red-500">*</span></label>
-        <textarea id="skills" rows="3" placeholder="Java, React, SQL, Spring Boot" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
-      </div>
-
-      <button type="submit"
-        class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl">
-        Đăng Ký
-      </button>
-
-    </form>
+<div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-2xl">
+  <div class="text-center mb-8">
+    <h1 class="text-blue-600 mb-2 text-2xl font-bold">Đăng Ký Tài Khoản Sinh Viên</h1>
+    <p class="text-gray-600">Vui lòng điền đầy đủ thông tin bên dưới</p>
   </div>
 
-  <!-- Xử lý JS -->
-  <script>
-    document.getElementById("register-form").addEventListener("submit", async (e) => {
-      e.preventDefault(); // Ngăn load lại trang
+  <form class="space-y-6" id="register-form">
 
-      // Lấy dữ liệu form
-      const student = {
-        name: document.getElementById("name").value.trim(),
-        studentId: document.getElementById("studentId").value.trim(),
-        address: document.getElementById("address").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        skills: document.getElementById("skills").value.trim()
-      };
+    <div class="space-y-2">
+      <label for="name" class="block text-gray-700">Tên <span class="text-red-500">*</span></label>
+      <input type="text" id="name" placeholder="Nguyễn Văn A" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
 
-      // Kiểm tra trống (nếu cần)
-      if (!student.name || !student.studentId || !student.address || !student.email || !student.phone || !student.skills) {
-        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
-        return;
-      }
+    <div class="space-y-2">
+      <label for="studentId" class="block text-gray-700">Mã số sinh viên <span class="text-red-500">*</span></label>
+      <input type="text" id="studentId" placeholder="001012412" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
 
-      try {
-        // Gửi về Back-end
-        const response = await fetch("/api/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(student)
-        });
+    <div class="space-y-2">
+      <label for="address" class="block text-gray-700">Địa chỉ <span class="text-red-500">*</span></label>
+      <input type="text" id="address" placeholder="123 Đường Lê Lợi, Hà Nội" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
 
-        const result = await response.json();
+    <div class="space-y-2">
+      <label for="email" class="block text-gray-700">Email <span class="text-red-500">*</span></label>
+      <input type="email" id="email" placeholder="nguyenvana@example.com" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
 
-        if (result.success) {
-          alert("🎉 Đăng ký thành công!");
-          window.location.href = "/profile"; // 👉 chuyển sang Profile
-        } else {
-          alert("❌ Đăng ký thất bại: " + result.message);
-        }
+    <div class="space-y-2">
+      <label for="password" class="block text-gray-700">Mật khẩu <span class="text-red-500">*</span></label>
+      <input type="password" id="password" placeholder="Nhập mật khẩu" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
 
-      } catch (error) {
-        alert("🚨 Lỗi kết nối server! Vui lòng thử lại.");
-      }
+    <div class="space-y-2">
+      <label for="phone" class="block text-gray-700">SĐT <span class="text-red-500">*</span></label>
+      <input type="tel" id="phone" placeholder="0901234567" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <div class="space-y-2">
+      <label for="skills" class="block text-gray-700">Kỹ năng <span class="text-red-500">*</span></label>
+      <textarea id="skills" rows="3" placeholder="Java, React, SQL, Spring Boot" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+    </div>
+
+    <button type="submit"
+      class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl">
+      Đăng Ký
+    </button>
+
+  </form>
+</div>
+
+<script>
+document.getElementById("register-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const student = {
+    name: document.getElementById("name").value.trim(),
+    studentId: document.getElementById("studentId").value.trim(),
+    address: document.getElementById("address").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    password: document.getElementById("password").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    skills: document.getElementById("skills").value.trim()
+  };
+
+  if (!student.name || !student.studentId || !student.address || !student.email || !student.password || !student.phone || !student.skills) {
+    alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(student)
     });
-  </script>
+
+    const result = await response.json();
+
+    if (result.success) {
+      localStorage.setItem("studentId", result.student.studentId);
+      alert("🎉 Đăng ký thành công!");
+      window.location.href = "/profile.html";
+    } else {
+      alert("❌ Đăng ký thất bại: " + result.message);
+    }
+
+  } catch (error) {
+    alert("🚨 Lỗi kết nối server! Vui lòng thử lại.");
+  }
+});
+</script>
 
 </body>
-
 </html>

@@ -5,6 +5,7 @@ const StudentSchema = new mongoose.Schema({
   studentId: String,
   address: String,
   email: String,
+  password: String,
   phone: String,
   skills: String
 });

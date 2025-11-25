@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const connectDB = require("./database");
+const authRoutes = require("./routes/auth");
+app.use("/api", authRoutes);
+
 const app = express();
 const PORT = 3000;
 connectDB();
